@@ -150,13 +150,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Icon(
-                          Icons.favorite,
+                          Icons.favorite_border,
                         ),
                         SizedBox(
                           width: 16.0,
                         ),
                         Icon(
-                          Icons.comment,
+                          Icons.chat_bubble_outline,
                         ),
                         SizedBox(
                           width: 16.0,
@@ -164,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Icon(Icons.send),
                       ],
                     ),
-                    Icon(Icons.bookmark)
+                    Icon(Icons.bookmark_border)
                   ],
                 ),
               ),
