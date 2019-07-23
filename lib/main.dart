@@ -91,7 +91,129 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   );
 
-  final postList = Expanded(
+  final profile = Padding(
+    padding: EdgeInsets.only(left: 16.0, top: 8.0, bottom: 8.0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Container(
+              height: 40.0,
+              width: 40.0,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: NetworkImage(
+                        "https://cdn.pixabay.com/photo/2014/11/30/14/11/kitty-551554_1280.jpg")),
+              ),
+            ),
+            SizedBox(
+              width: 10.0,
+            ),
+            Text(
+              "jinuiyou",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
+        IconButton(
+          icon: Icon(Icons.more_vert),
+          onPressed: null,
+        )
+      ],
+    ),
+  );
+
+  final image = Flexible(
+    child: Image.network(
+      "https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_1280.jpg",
+    ),
+  );
+
+  final action = Padding(
+    padding: EdgeInsets.all(16.0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Icon(
+              Icons.favorite_border,
+            ),
+            SizedBox(
+              width: 16.0,
+            ),
+            Icon(
+              Icons.chat_bubble_outline,
+            ),
+            SizedBox(
+              width: 16.0,
+            ),
+            Icon(Icons.send),
+          ],
+        ),
+        Icon(Icons.bookmark_border)
+      ],
+    ),
+  );
+
+  final likeText = Padding(
+    padding: EdgeInsets.symmetric(horizontal: 16.0),
+    child: Text(
+      "Liked by wlsdml1103, tinyjin and 991,103 others",
+      style: TextStyle(fontWeight: FontWeight.bold),
+    ),
+  );
+
+  final comment = Padding(
+    padding: EdgeInsets.fromLTRB(16.0, 16.0, 0.0, 8.0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          height: 25.0,
+          width: 25.0,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            image: DecorationImage(
+                fit: BoxFit.fill,
+                image: NetworkImage(
+                    "https://cdn.pixabay.com/photo/2014/11/30/14/11/kitty-551554_1280.jpg")),
+          ),
+        ),
+        SizedBox(
+          width: 10.0,
+        ),
+        Expanded(
+          child: TextField(
+            style: TextStyle(fontSize: 12.0),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText: "Add a comment...",
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
+  final date = Padding(
+    padding: EdgeInsets.symmetric(horizontal: 16.0),
+    child: Text(
+      "1 Day Ago",
+      style: TextStyle(
+        color: Colors.grey,
+        fontSize: 10.0,
+      ),
+    ),
+  );
+
+
+
+  final postList1 = Expanded(
     child: ListView.builder(
         itemCount: 5,
         itemBuilder: (context, index) {
@@ -223,6 +345,35 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final post = Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        // 프로필 영역
+        profile,
+        // 이미지 영역
+        image,
+        // 액션 영역
+        action,
+        // 좋아요 정보 영역
+        likeText,
+        // 댓글 영역
+        comment,
+        // 날짜 영역
+        date,
+      ],
+    );
+
+    final postList = Expanded(
+      child: ListView.builder(
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            return post;
+          }
+      ),
+    );
+
     return Scaffold(
       appBar: appBar,
       body: Column(
